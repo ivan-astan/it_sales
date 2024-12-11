@@ -2,7 +2,7 @@
   "name": "it_sales",
   "version": "0.1.0",
   "private": true,
-     "homepage": "https://ivan-astan.github.io/it_sales/",
+  "homepage": "https://ivan-astan.github.io/it_sales",
   "dependencies": {
     "@gravity-ui/uikit": "^6.38.0",
     "cra-template-typescript": "1.2.0",

@@ -20,7 +20,7 @@ const ProductDetailed = () => {
             }
         }
         
-        navigate('/productss')
+        navigate('/products')
     }
 
     if (!product) return <h1 className="text-danger text-center">Продукт не найден</h1>;
