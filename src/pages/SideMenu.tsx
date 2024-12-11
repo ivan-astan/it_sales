@@ -1,26 +1,28 @@
 import React, { useState } from 'react';
 import { MdClose, MdSearch } from 'react-icons/md';
-import { useMenuStore } from './state/useMenuStore.ts';
-import { Category, useITStore } from './state/useITStore.ts';
-
-const categories: Category[] = ['Все товары', 'Электроника', 'Одежда', 'Книги', 'Косметика'];
+import { useMenuStore } from '../state/useMenuStore.ts';
+import { Category, useITStore } from '../state/useITStore.ts';
+import { useNavigate } from 'react-router-dom';
 
 
 const SideMenu: React.FC = () => {
   const [search, setSearch] = useState('');
+  const categories = useMenuStore((state) => state.categories)
   const setQuery = useMenuStore((state) => state.setQuery)
   const setMenuOpen = useMenuStore((state) => state.setMenuOpen)
   const setCategory = useITStore((state) => state.setCategory)
   const isMenuOpen = useMenuStore((state) => state.isMenuOpen)
-
+  const navigate = useNavigate()
 
   const handleCategorySelect = (category: Category) => {
     setCategory(category);
     setMenuOpen(false)
+    navigate('/products')
   };
   const handleSearchButton = () => {
     setQuery(search)
     setMenuOpen(false)
+    navigate('/products')
   }
 
   return (

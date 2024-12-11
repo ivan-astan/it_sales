@@ -1,11 +1,13 @@
 import React from "react";
-import { useITStore } from "./state/useITStore.ts";
-import { useMenuStore } from "./state/useMenuStore.ts";
+import { useITStore } from "../state/useITStore.ts";
+import { useMenuStore } from "../state/useMenuStore.ts";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const ProductList: React.FC = () => {
   const products = useITStore((state) => state.products);
   const category = useITStore((state) => state.category);
   const query = useMenuStore((state) => state.query);
+  const navigate = useNavigate();
 
   let filteredProducts =
     category === "Все товары"
@@ -21,6 +23,7 @@ const ProductList: React.FC = () => {
       {filteredProducts.map((product) => (
         <div
           key={product.id}
+          onClick={() => navigate(`/products/${product.id}`)}
           className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105"
         >
           <img
